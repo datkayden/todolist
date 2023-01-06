@@ -1,15 +1,14 @@
 import React from "react";
-import logo from "./assets/logo.svg";
-import "./App.css";
+import logo from "assets/logo.svg";
+import "App.css";
+import router from "routers";
+import {RouterProvider} from "react-router-dom";
 
 function App() {
     return (
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
@@ -19,6 +18,9 @@ function App() {
                     Learn React
                 </a>
             </header>
+            <div>
+                <RouterProvider router={router}/>
+            </div>
         </div>
     );
 }
