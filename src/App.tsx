@@ -1,27 +1,15 @@
 import React from "react";
-import logo from "assets/logo.svg";
 import "App.css";
 import router from "routers";
 import {RouterProvider} from "react-router-dom";
+import {Provider} from "react-redux";
+import store from "store";
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <div>
-                <RouterProvider router={router}/>
-            </div>
-        </div>
+        <Provider store={store}>
+            <RouterProvider router={router}/>
+        </Provider>
     );
 }
 
