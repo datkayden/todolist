@@ -1,42 +1,59 @@
-import React, {ReactElement, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {loginSuccess} from "store/userReducer";
+import React, {ReactElement} from "react";
+import {useAppDispatch, useAppSelector} from "store";
+import {
+    decrease,
+    decreaseByAmount,
+    getAsyncCount,
+    increase,
+    increaseByAmount,
+    selectCount,
+    selectIsLoading
+} from "store/userReducer";
 
-const List = (): ReactElement => {
-    const dispatch = useDispatch();
-    const user = useSelector((state: any) => state.user);
-    const [count, setCount] = useState(0);
-    const addCount = () => {
-        const newCount = count + 1;
-        setCount(newCount);
+const List = () => {
+    const dispatch = useAppDispatch();
+    const count = useAppSelector(selectCount);
+    const isLoading = useAppSelector(selectIsLoading);
+    const handleIncrease = () => {
+        dispatch(increase());
     };
 
-    const handleLogin = () => {
-        const user = {
-            name: "thanh dat",
-            age: 20
-        };
-        dispatch(loginSuccess(user));
+    const handleDecrease = () => {
+        dispatch(decrease());
     };
 
-    // const handleLogout = () => {
-    //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //     // @ts-ignore
-    //     dispatch(logout());
-    // };
+    const handleIncreaseAmount = () => {
+        dispatch(increaseByAmount(2));
+    };
 
-    const subCount = () => {
-        const newCount = count - 1;
-        setCount(newCount);
+    const handleDecreaseAmount = () => {
+        dispatch(decreaseByAmount(3));
+    };
+
+    const handleFetchUserId = () => {
+        dispatch(getAsyncCount(3));
     };
 
     return (
         <div>
-            <p>Count: {count}</p>
-            <p>User: {JSON.stringify(user)}</p>
-            <button onClick={addCount}>Add</button>
-            <button onClick={subCount}>Sub</button>
-            <button onClick={handleLogin}>Login</button>
+            <h2>Counter App</h2>
+            <div>Count: {count}</div>
+            <div>isLoading: {isLoading.toString()}</div>
+            <button onClick={handleIncrease}>
+                Increase
+            </button>
+            <button onClick={handleDecrease}>
+                Decrease
+            </button>
+            <button onClick={handleIncreaseAmount}>
+                Increase 2
+            </button>
+            <button onClick={handleDecreaseAmount}>
+                Decrease 3
+            </button>
+            <button onClick={handleFetchUserId}>
+                Increase Async 10
+            </button>
         </div>
     );
 };
