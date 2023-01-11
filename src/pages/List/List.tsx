@@ -1,4 +1,5 @@
-import React, {ReactElement} from "react";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import {useAppDispatch, useAppSelector} from "store";
 import {
     decrease,
