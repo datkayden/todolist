@@ -9,15 +9,15 @@ import {createBrowserRouter} from "react-router-dom";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Dashboard/>
+        element: <List/>
     },
     {
         path: "/login",
         element: <Login/>
     },
     {
-        path: "/todo-list",
-        element: <List/>
+        path: "/dashboard",
+        element: <Dashboard/>
     },
     {
         path: "/register",

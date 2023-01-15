@@ -1,10 +1,12 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {combineReducers} from "redux";
 import user from "store/userReducer";
+import task from "store/taskReducer";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 const reducer = combineReducers({
-    user
+    user,
+    task
 });
 
 const store = configureStore({
