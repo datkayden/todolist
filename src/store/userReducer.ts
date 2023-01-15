@@ -12,7 +12,6 @@ const initialState: UserState = {
 };
 
 export const getAsyncCount = createAsyncThunk("user/fetchById", async (userId: number): Promise<number> => {
-    console.log("userId", userId);
     await new Promise(resolve => setTimeout(resolve, 3000));
     return 10;
 });
